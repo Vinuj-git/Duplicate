@@ -1,0 +1,104 @@
+<html>
+
+<h1>Hello World</h1>
+
+
+<form method="GET" action="">
+    Select number of elements:
+        <select name="noOfElements">
+            <option value=2>2</option>
+            <option value=4>4</option>
+          </select>
+
+          <br> <br> <br>
+
+{{data}}
+
+<br>
+<br>
+
+
+{% for i in noOfPages %}
+<input type="submit" value={{i}} name="pageNo">
+
+{% endfor %}
+</form>
+
+
+<a href='/csvPagination'>Click here for CSV pagination </a>
+
+</html>
+
+
+{% comment %} <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="Description" content="Enter your description here" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css">
+    <title>Pagination</title>
+</head>
+<body>
+    <div class="container mt-5">
+              <!-- <form action="">        {% for page in page_objects %}
+        <div style="border: 1px solid black">
+            <tr>Name :-</tr>
+            <td>{{page.name}}</td>
+            <br>
+            <tr>Email :-</tr>
+            <td>{{page.email}}</td>
+            <br>
+            <tr>Contact_number :-</tr>
+            <td>{{page.contact_number}}</td>
+        </div>
+        {% endfor %} -->
+        
+        <center>
+            
+        <table border="2">
+        <h2>CSV duplicate entry  </h2>
+
+            <!-- <form action="csvpagination" method="GET">  
+                Select number of elements:
+                <select name="noOfElements">
+                    <option value=5>5</option>
+                    <option value=10>10</option>
+            
+            </select> -->
+        
+        <tr>
+            {% for colname in  headerInfo %}
+            <th>{{colname}}</th>
+            {% endfor %}
+        </tr>
+        {% for row in page_objects %}
+        <tr>
+        {% for ele in row %}
+        <td>{{ele}}</td>
+        {% endfor %}
+        </tr>
+        {% endfor %}
+    </div>
+</table>
+</center>
+    <div class="text-center container mt-5">
+        {% if page_objects.has_previous %}
+        <a class="poppins-font p-2" href="?page={{page_objects.previous_page_number}}">
+            Previous
+        </a>
+        {% endif %}
+        <a href="" class="poppins-font p-2 active-btn text-dark" style="background-color: #00e1ff;">
+            {{page_objects.number}}
+        </a>
+        {% if page_objects.has_next %}
+        <a class="poppins-font p-2" href="?page={{page_objects.next_page_number}}">
+            Next
+        </a>
+        {% endif %}
+    </form>
+
+    </div>
+</body> {% endcomment %}
